@@ -14,7 +14,7 @@ long long a[N];
 vector<long long> comp;
 int mxrank;
 
-long long getrank(long long x) {
+int getrank(long long x) {
     return lower_bound(comp.begin(), comp.end(), x) - comp.begin() + 1;
 }
 
