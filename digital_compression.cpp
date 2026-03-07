@@ -11,8 +11,8 @@ const long long N = 1e6 + 5;
 int n;
 long long a[N];
 
-int mxrank;
 vector<long long> comp;
+int mxrank;
 
 long long getrank(long long x) {
     return lower_bound(comp.begin(), comp.end(), x) - comp.begin() + 1;
