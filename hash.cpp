@@ -48,9 +48,25 @@ struct Hash {
     }
 };
 
+int compare(string s1, Hash hashs1, int l1, int r1, string s2, Hash hashs2, int l2, int r2) {
+    if (hashs1.get(l1, r1) == hashs2.get(l2, r2)) return true;
+    int len = 0;
+    int l = 0;
+    int r = min(r1 - l1 + 1, r2 - l2 + 1);
+    while (l <= r) {
+        int mid = (l + r) / 2;
+        if (hashs1.get(l1, l1 + mid - 1) == hashs2.get(l2, l2 + mid - 1)) {
+            len = mid;
+            l = mid + 1;
+        }
+        else r = mid - 1;
+    }
+    return s1[l1 + len] > s2[l2 + len];
+}
+
 void sol() {
-    string a = "abcdabc";
-    string b = "abdabce";
+    string a = "abccdabc";
+    string b = "abcdabce";
     
     Hash hasha(a);
     Hash hashb(b);
@@ -58,8 +74,17 @@ void sol() {
     if (hasha.get(0, 1) == hashb.get(0, 1)) cout << "YES\n";
     else cout << "NO\n";
 
-    if (hasha.get(0, 2) == hashb.get(0, 2)) cout << "YES\n";
+    if (hasha.get(0, 3) == hashb.get(0, 3)) cout << "YES\n";
     else cout << "NO\n";
+
+    if (compare(a, hasha, 0, 4, b, hashb, 0, 4)) cout << "oke\n";
+    else cout << "not oke\n";
+
+    if (compare(a, hasha, 4, 7, b, hashb, 4, 7)) cout << "oke\n";
+    else cout << "not oke\n";
+
+    if (compare(a, hasha, 0, 7, b, hashb, 0, 7)) cout << "oke\n";
+    else cout << "not oke\n";
 
     return;
 }
