@@ -7,7 +7,7 @@
 
 using namespace std;
 
-long long modpow(long long a, long long b, long long mod) {
+long long modpow(long long a, long long b, const long long mod) {
     if (b == 0) return 1;
     long long p = modpow(a, b / 2, mod);
     p = (p * p) % mod;
