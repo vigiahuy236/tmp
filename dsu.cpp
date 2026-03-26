@@ -23,15 +23,15 @@ struct DSU {
         if (par[u] == u) return u;
         return par[u] = acs(par[u]);
     }
-    void join(int u, int v) {
+    bool join(int u, int v) {
         u = acs(u);
         v = acs(v);
-        if (u == v) return;
+        if (u == v) return false;
         if (vec[u].size() < vec[v].size()) swap(u, v);
         par[v] = u;
         freq[u] += freq[v];
         for (int x : vec[v]) vec[u].push_back(x);
-        return;
+        return true;
     }
     int cnt(int u) {
         return freq[acs(u)];
