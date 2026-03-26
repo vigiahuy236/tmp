@@ -7,29 +7,30 @@
 using namespace std;
 
 struct DSU {
-    vector<int> p, freq;
-    vector<vector<int>> d;
+    vector<int> par, freq;
+    vector<vector<int>> vec;
     DSU(int _n = 0) {
         init(_n);
     }
     void init(int _n) {
-        p.assign(_n + 1, 0);
+        par.assign(_n + 1, 0);
         freq.assign(_n + 1, 1);
-        d.assign(_n + 1, vector<int>());
-        for (int i = 1; i <= _n; i++) p[i] = i;
-        for (int i = 1; i <= _n; i++) d[i].push_back(i);
+        vec.assign(_n + 1, vector<int>());
+        for (int i = 1; i <= _n; i++) par[i] = i;
+        for (int i = 1; i <= _n; i++) vec[i].push_back(i);
     }
     int acs(int u) {
-        if (p[u] == u) return u;
-        return p[u] = acs(p[u]);
+        if (par[u] == u) return u;
+        return par[u] = acs(par[u]);
     }
     void join(int u, int v) {
         u = acs(u);
         v = acs(v);
         if (u == v) return;
-        p[u] = v;
-        freq[v] += freq[u];
-        for (int x : d[u]) d[v].push_back(x);
+        if (vec[u].size() < vec[v].size()) swap(u, v);
+        par[v] = u;
+        freq[u] += freq[v];
+        for (int x : vec[v]) vec[u].push_back(x);
         return;
     }
     int cnt(int u) {
@@ -54,7 +55,7 @@ void sol() {
         } else if (type == '3') {
             int u; cin >> u;
             int ru = dsu.acs(u);
-            for (int x : dsu.d[ru]) cout << x << " ";
+            for (int x : dsu.vec[ru]) cout << x << " ";
             cout << "\n"; 
         } else {
             int u, v; cin >> u >> v;
