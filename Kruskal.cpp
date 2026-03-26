@@ -9,7 +9,6 @@ using namespace std;
 
 const int N = 1e5 + 6;
 int n, m;
-vector<pair<int, long long>> adj[N];
 long long total;
 
 struct DSU {
@@ -60,8 +59,6 @@ void sol() {
     while (m--) {
         int u, v; cin >> u >> v;
         long long w; cin >> w;
-        adj[u].push_back(make_pair(v, w));
-        adj[v].push_back(make_pair(u, w));
         edges.push_back({u, v, w});
     }
 
