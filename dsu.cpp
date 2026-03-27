@@ -7,14 +7,15 @@
 using namespace std;
 
 struct DSU {
-    vector<int> par, freq;
+    vector<int> par;
+    vector<int> sz;
     vector<vector<int>> vec;
     DSU(int _n = 0) {
         init(_n);
     }
     void init(int _n) {
         par.assign(_n + 1, 0);
-        freq.assign(_n + 1, 1);
+        sz.assign(_n + 1, 1);
         vec.assign(_n + 1, vector<int>());
         for (int i = 1; i <= _n; i++) par[i] = i;
         for (int i = 1; i <= _n; i++) vec[i].push_back(i);
@@ -27,14 +28,14 @@ struct DSU {
         u = acs(u);
         v = acs(v);
         if (u == v) return false;
-        if (vec[u].size() < vec[v].size()) swap(u, v);
+        if (sz[u] < sz[v]) swap(u, v);
         par[v] = u;
-        freq[u] += freq[v];
+        sz[u] += sz[v];
         for (int x : vec[v]) vec[u].push_back(x);
         return true;
     }
     int cnt(int u) {
-        return freq[acs(u)];
+        return sz[acs(u)];
     }
     bool check(int u, int v) {
         return acs(u) == acs(v);
