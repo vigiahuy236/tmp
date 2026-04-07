@@ -274,9 +274,16 @@ void sol() {
         }
     }
 
-    // algo1::sol();
-    // algo2::sol();
-    // algo3::sol();    
+    cout << "algo 1:\n";
+    algo1::sol();
+
+    cout << "algo 2:\n";
+    algo2::sol();
+
+    cout << "algo 3:\n";
+    algo3::sol();
+
+    cout << "algo 4:\n";
     algo4::sol();
 
     return;
@@ -284,7 +291,7 @@ void sol() {
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    freopen("local_search.inp", "r", stdin);
+    // freopen("local_search.inp", "r", stdin);
     // freopen("local_search.out", "w", stdout);
     int T = 1;
     //cin >> T;
