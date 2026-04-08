@@ -91,8 +91,8 @@ struct Vec {
     }
 };
 
-long double dot(Vec veca, Vec vecb) {
-    long double res = veca.x * vecb.x + veca.y * vecb.y;
+long double dot(Vec v1, Vec v2) {
+    long double res = v1.x * v2.x + v1.y * v2.y;
     return res;
 }
 
