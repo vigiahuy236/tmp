@@ -96,8 +96,8 @@ long double dot(Vec v1, Vec v2) {
     return res;
 }
 
-long double cross(Vec veca, Vec vecb) {
-    long double res = veca.x * vecb.y - veca.y * vecb.x;
+long double cross(Vec v1, Vec v2) {
+    long double res = v1.x * v2.y - v1.y * v2.x;
     return res;
 }
 
