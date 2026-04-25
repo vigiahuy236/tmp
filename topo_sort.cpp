@@ -46,8 +46,8 @@ void sol() {
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    freopen("topo_sort.inp", "r", stdin);
-    freopen("topo_sort.out", "w", stdout);
+    // freopen("topo_sort.inp", "r", stdin);
+    // freopen("topo_sort.out", "w", stdout);
     int T = 1;
     //cin >> T;
     while (T--) sol();
