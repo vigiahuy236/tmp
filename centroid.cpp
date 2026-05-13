@@ -24,15 +24,36 @@ void dfs(int u, int p) {
     return;
 }
 
-int findcentroid(int u, int p) {
+int findcentroid(int u, int p, int _sz) {
     for (int v : adj[u]) {
         if (v != p && !del[v]) {    
-            if (sz[v] > n / 2) {
-                return findcentroid(v, u);
+            if (sz[v] > _sz / 2) {
+                return findcentroid(v, u, _sz);
             }
         }
     }
     return u;
+}
+
+void dnc(int u) {
+    dfs(u, 0);
+    int c = findcentroid(u, 0, sz[u]);
+    del[c] = true;
+
+    cout << "tree with root " << u << " have cetroid: " << c << "\n";
+
+    /*
+    process
+    ...
+    */
+
+    for (int v : adj[c]) {
+        if (!del[v]) {
+            dnc(v);
+        }
+    }
+
+    return;
 }
 
 void sol() {
@@ -43,16 +64,14 @@ void sol() {
         adj[v].push_back(u);
     }
     
-    dfs(1, 1);
-
-    cout << findcentroid(1, 1) << "\n";
+    dnc(1);
 
     return;
 }
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    // freopen("centroid.inp", "r", stdin);
+    freopen("centroid.inp", "r", stdin);
     // freopen("centroid.out", "w", stdout);
     int T = 1;
     //cin >> T;
