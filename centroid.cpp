@@ -39,7 +39,6 @@ int find_centroid(int u, int p, int _sz) {
 void dnc(int u) {
     dfs(u, 0);
     int c = find_centroid(u, 0, sz[u]);
-    del[c] = true;
 
     cout << "tree with root " << u << " have cetroid: " << c << "\n";
 
@@ -48,6 +47,7 @@ void dnc(int u) {
     ...
     */
 
+    del[c] = true;
     for (int v : adj[c]) {
         if (!del[v]) {
             dnc(v);
