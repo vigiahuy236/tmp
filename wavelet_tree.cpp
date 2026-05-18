@@ -67,7 +67,7 @@ struct Node {
         if (k <= mid) {
             return (lpt ? lpt->Count_LEQ(b[l - 1] + 1, b[r], k, low, mid) : 0);
         }
-        return (rpt ? rpt->Count_LEQ(l - b[l - 1], r - b[r], k, mid + 1, high) : 0);
+        return cnt_left + (rpt ? rpt->Count_LEQ(l - b[l - 1], r - b[r], k, mid + 1, high) : 0);
     }
 };
 
@@ -87,22 +87,24 @@ struct WaveletTree {
     }
 
     int Count_LEQ(int l, int r, int k) {
-        return root->Count_EqualK(l, r, k, MIN, MAX);
+        return root->Count_LEQ(l, r, k, MIN, MAX);
     }
 };
 
 WaveletTree<_MIN, _MAX>* tree;
 
 void sol() {
-    cin >> n >> k;
+    cin >> n;
     for (int i = 1; i <= n; i++) cin >> a[i];
 
     tree = new WaveletTree<_MIN, _MAX>(a + 1, a + n + 1);
 
-    int l, r, k; cin >> l >> r >> k;
-    cout << "Find Kth Smallest:\n" << tree->Find_KthSmallest(l, r, k) << "\n";
-    cout << "Count Equal K:\n" << tree->Count_EqualK(l, r, k) << "\n"; 
-    cout << "Count LEQ:\n" << tree->Count_LEQ(l, r, k) << "\n"; 
+    int l, r, k; 
+    if (cin >> l >> r >> k) {
+        cout << "Find Kth Smallest:\n" << tree->Find_KthSmallest(l, r, k) << "\n";
+        cout << "Count Equal K:\n" << tree->Count_EqualK(l, r, k) << "\n"; 
+        cout << "Count LEQ:\n" << tree->Count_LEQ(l, r, k) << "\n"; 
+    }
 
     return;
 }
