@@ -12,25 +12,27 @@ int n, q;
 long long a[N];
 vector<int> adj[N];
 int timer;
-int in[N];
-int out[N];
-int elpos[N];
+int tin[N];
+int tout[N];
+int tour[N];
 
 void dfs(int u, int p) {
-    in[u] = ++timer;
-    elpos[timer] = u;
+    tin[u] = ++timer;
+    tour[timer] = u;
+
     for (int v : adj[u]) {
         if (v != p) {
             dfs(v, u);
         }
     }
-    out[u] = timer;
+
+    tout[u] = timer;
     return;
 }
 
 long long query(int u) {
     long long res = 0;
-    for (int i = in[u]; i <= out[u]; i++) res += a[elpos[i]];
+    for (int i = tin[u]; i <= tout[u]; i++) res += a[tour[i]];
     return res;
 }
 
@@ -47,6 +49,7 @@ void sol() {
 
     while (q--) {
         int type; cin >> type;
+        
         if (type == 1) {
             int u;
             long long x; cin >> x;
