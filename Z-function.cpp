@@ -50,8 +50,6 @@ int main() {
     ios::sync_with_stdio(0); cin.tie(0);
     // freopen("Z-function.inp", "r", stdin);
     // freopen("Z-function.out", "w", stdout);
-    int T = 1;
-    //cin >> T;
-    while (T--) sol();
+    sol();
     return 0;
 }
