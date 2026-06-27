@@ -164,8 +164,6 @@ int main() {
     ios::sync_with_stdio(0); cin.tie(0);
     // freopen("condensation_graph.inp", "r", stdin);
     // freopen("condensation_graph.out", "w", stdout);
-    int T = 1;
-    //cin >> T;
-    while (T--) sol();
+    sol();
     return 0;
 }
