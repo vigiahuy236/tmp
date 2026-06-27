@@ -49,8 +49,6 @@ int main() {
     ios::sync_with_stdio(0); cin.tie(0);
     // freopen("tarjan.inp", "r", stdin);
     // freopen("tarjan.out", "w", stdout);
-    int T = 1;
-    //cin >> T;
-    while (T--) sol();
+    sol();
     return 0;
 }

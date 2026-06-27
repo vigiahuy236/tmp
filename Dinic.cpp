@@ -72,10 +72,8 @@ void sol() {
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    freopen("Dinic.inp", "r", stdin);
-    freopen("Dinic.out", "w", stdout);
-    int T = 1;
-    //cin >> T;
-    while (T--) sol();
+    // freopen("Dinic.inp", "r", stdin);
+    // freopen("Dinic.out", "w", stdout);
+    sol();
     return 0;
 }

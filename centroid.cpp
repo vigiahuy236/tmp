@@ -110,8 +110,6 @@ int main() {
     ios::sync_with_stdio(0); cin.tie(0);
     // freopen("centroid.inp", "r", stdin);
     // freopen("centroid.out", "w", stdout);
-    int T = 1;
-    //cin >> T;
-    while (T--) sol();
+    sol();
     return 0;
 }
